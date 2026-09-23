@@ -1,0 +1,21 @@
+# ------------------------------------------------------------------
+# Lista delle fonti RSS da cui l'agente raccoglie i contenuti.
+# Aggiungi/rimuovi righe come vuoi: non serve toccare il codice Python.
+#
+# Ogni fonte ha:
+#   name: nome che comparirà nella newsletter
+#   url:  indirizzo del feed RSS
+# ------------------------------------------------------------------
+
+sources:
+  - name: "ANSA - Tecnologia"
+    url: "https://www.ansa.it/sito/notizie/tecnologia/tecnologia_rss.xml"
+  - name: "Il Post"
+    url: "https://www.ilpost.it/feed/"
+  - name: "Hacker News (top stories)"
+    url: "https://hnrss.org/frontpage"
+
+# Impostazioni generali
+settings:
+  weekly_report_day: "Sunday"   # giorno in cui viene generato il resoconto settimanale
+  max_articles_per_day: 15      # limite articoli processati al giorno (per non esagerare con l'AI)

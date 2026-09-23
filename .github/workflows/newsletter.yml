@@ -1,0 +1,44 @@
+name: Newsletter giornaliera
+
+on:
+  schedule:
+    # Ogni giorno alle 07:00 UTC (le 08:00 o 09:00 in Italia, a seconda dell'ora legale)
+    - cron: "0 7 * * *"
+  workflow_dispatch: {}   # permette di far partire lo script manualmente da GitHub
+
+# Permette al job di scrivere (commit) nel repo
+permissions:
+  contents: write
+
+jobs:
+  run-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installa le dipendenze
+        run: pip install -r requirements.txt
+
+      - name: Esegui lo script della newsletter
+        working-directory: src
+        env:
+          LLM_PROVIDER: "gemini"
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: python main.py
+
+      - name: Salva nel repo il log e gli eventuali resoconti generati
+        run: |
+          git config user.name "newsletter-bot"
+          git config user.email "newsletter-bot@users.noreply.github.com"
+          git add data/weekly_log.json reports/
+          git diff --staged --quiet || git commit -m "Aggiornamento automatico newsletter [skip ci]"
+          git push
