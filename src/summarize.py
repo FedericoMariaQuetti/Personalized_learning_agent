@@ -55,7 +55,7 @@ def _summarize_with_gemini(prompt):
     api_key = os.environ["GEMINI_API_KEY"]
     genai.configure(api_key=api_key)
 
-    model = genai.GenerativeModel("gemini-1.5-flash")  # modello leggero, incluso nel tier gratuito
+    model = genai.GenerativeModel("gemini-3.5-flash-lite")
     response = model.generate_content(prompt)
     return response.text
 
