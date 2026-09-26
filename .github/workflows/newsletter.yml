@@ -26,14 +26,13 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Esegui lo script della newsletter
-        working-directory: src
         env:
           LLM_PROVIDER: "gemini"
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
-        run: python main.py
+        run: python src/main.py
 
       - name: Salva nel repo il log e gli eventuali resoconti generati
         run: |
