@@ -20,6 +20,8 @@ Domenica:
 
 from copy import deepcopy
 from datetime import date
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import state as state_module
 import feedback
@@ -39,8 +41,8 @@ from content.poker import generate_poker_section
 
 
 def main():
-    today = date.today()
-    weekday = today.weekday()
+    today = datetime.now(ZoneInfo("Europe/London")).date()
+    weekday = today.weekday()-3
 
     # ------------------------------------------------------------------
     # DOMENICA
