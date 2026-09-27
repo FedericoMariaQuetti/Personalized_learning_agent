@@ -10,7 +10,7 @@ Di seguito trovi una lista di articoli (titolo, fonte, breve estratto).
 Scrivi un riassunto giornaliero in italiano con questa struttura:
 
 1. Un'introduzione di 1-2 frasi sul tema principale della giornata.
-2. Un elenco puntato con un breve riassunto (max 2 frasi) per ogni articolo,
+2. Un elenco puntato con un breve riassunto (3 frasi) per ogni articolo,
    indicando la fonte tra parentesi.
 
 Non inventare informazioni non presenti negli articoli.

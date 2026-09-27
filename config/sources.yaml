@@ -1,11 +1,17 @@
 sources:
   - name: "ANSA - Tecnologia"
     url: "https://www.ansa.it/sito/notizie/tecnologia/tecnologia_rss.xml"
-  - name: "Il Post"
-    url: "https://www.ilpost.it/feed/"
+  - name: "Il Sole 24 Ore - Mondo"
+    url: "https://www.ilsole24ore.com/rss/mondo.xml"
+  - name: "Il Sole 24 Ore - Economia"
+    url: "https://www.ilsole24ore.com/rss/economia.xml"
+  - name: "Il Sole 24 Ore - Finanza"
+    url: "https://www.ilsole24ore.com/rss/finanza.xml"
+  - name: "Il Sole 24 Ore - Economia"
+    url: "https://www.ilsole24ore.com/rss/tecnologia.xml"
   - name: "Hacker News (top stories)"
     url: "https://hnrss.org/frontpage"
 
 settings:
   weekly_report_day: "Sunday"
-  max_articles_per_day: 15
+  max_articles_per_day: 20
