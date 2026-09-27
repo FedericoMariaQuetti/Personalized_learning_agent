@@ -41,11 +41,11 @@ def _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders):
         before = today.strftime("%d-%b-%Y")
 
         # Cerca solo le email di ieri inviate da noi
-        # con "Newsletter" nell'oggetto.
+        # con " " nell'oggetto.
         status, data = mail.search(
             None,
             "FROM", gmail_user,
-            "SUBJECT", "percorso di oggi",
+            "SUBJECT", "percorso",
             "SINCE", since,
             "BEFORE", before,
         )
