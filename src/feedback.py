@@ -44,7 +44,7 @@ def _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders):
         status, data = mail.search(
             None,
             "FROM", gmail_user,
-            "SUBJECT", "Newsletter",
+            "SUBJECT", "percorso di oggi",
             "SINCE", since,
             "BEFORE", before,
         )

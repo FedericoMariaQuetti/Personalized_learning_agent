@@ -8,6 +8,7 @@ ognuno con il proprio ritmo (5/10/20 giorni) e la propria continuità.
 from copy import deepcopy
 from llm import generate_text
 from content._utils import split_content_and_summary
+from math_render import replace_latex
 
 PROMPT_TEMPLATE = """Sei un tutor scientifico che scrive in italiano per uno studente universitario
 con solide basi di programmazione e statistica.
@@ -124,6 +125,8 @@ def generate_science_section(science_state):
 
 
 def _to_html_paragraphs(text):
+    """Trasforma il testo scientifico in immagine della formula."""
+    text = replace_latex(text)
     """Trasforma il testo in paragrafi HTML semplici, mantenendo gli a-capo."""
     paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
     return "".join(f"<p>{p}</p>" for p in paragraphs)
