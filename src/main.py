@@ -42,7 +42,7 @@ from content.poker import generate_poker_section
 
 def main():
     today = datetime.now(ZoneInfo("Europe/London")).date()
-    weekday = today.weekday()-3
+    weekday = today.weekday()
 
     # ------------------------------------------------------------------
     # DOMENICA
