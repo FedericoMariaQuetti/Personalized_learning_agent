@@ -99,32 +99,48 @@ def _get_styles():
 # LATEX
 # ---------------------------------------------------------------------------
 
-def _render_latex(latex, output_dir, index, fontsize=14):
-    """
-    Renderizza una formula LaTeX tramite matplotlib e restituisce
-    il percorso del PNG generato.
-    """
+def _normalize_latex(latex):
+    replacements = {
+        r"\ge": r"\geq",
+        r"\le": r"\leq",
+        r"\neq": r"\ne",
+        r"\text{": r"\mathrm{",
+    }
 
-    filename = os.path.join(output_dir, f"formula_{index}.png")
+    for old, new in replacements.items():
+        latex = latex.replace(old, new)
+
+    return latex
+
+def _render_latex(latex, output_dir, index, fontsize=14):
+    filename = os.path.join(
+        output_dir,
+        f"formula_{index}.png",
+    )
+
+    latex = _normalize_latex(latex)
 
     fig = plt.figure(figsize=(0.01, 0.01))
-    fig.text(
-        0,
-        0,
-        f"${latex}$",
-        fontsize=fontsize,
-    )
 
-    fig.savefig(
-        filename,
-        format="png",
-        dpi=200,
-        transparent=True,
-        bbox_inches="tight",
-        pad_inches=0.05,
-    )
+    try:
+        fig.text(
+            0,
+            0,
+            f"${latex}$",
+            fontsize=fontsize,
+        )
 
-    plt.close(fig)
+        fig.savefig(
+            filename,
+            format="png",
+            dpi=200,
+            transparent=True,
+            bbox_inches="tight",
+            pad_inches=0.05,
+        )
+
+    finally:
+        plt.close(fig)
 
     return filename
 
