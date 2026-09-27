@@ -14,7 +14,7 @@ import email
 import email.utils
 import imaplib
 import json
-from datetime import date
+from datetime import date, timedelta
 
 from copy import deepcopy
 from llm import generate_text
@@ -22,55 +22,68 @@ from llm import generate_text
 TRACK_DAYS = {"breve": 5, "completa": 10, "media": 20}
 
 
-def process_feedback(state, gmail_user, gmail_password, allowed_senders):
-    """
-    Legge il feedback nuovo e lo applica.
+def _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders):
+    import socket
 
-    Le email vengono marcate come lette solo dopo che:
-      1. il feedback è stato interpretato;
-      2. il patch è stato applicato con successo;
-      3. la marcatura come letta è andata a buon fine.
+    socket.setdefaulttimeout(60)
 
-    Se uno di questi passaggi fallisce, lo stato originale viene mantenuto
-    e il feedback potrà essere ritentato nella prossima esecuzione.
-    """
-    feedback_items = _fetch_unread_feedback(
-        gmail_user,
-        gmail_password,
-        allowed_senders,
-    )
+    mail = imaplib.IMAP4_SSL("imap.gmail.com")
+    mail.login(gmail_user, gmail_password)
 
-    if not feedback_items:
-        return state
+    try:
+        mail.select("INBOX")
 
-    feedback_texts = [item["body"] for item in feedback_items]
-    message_ids = [item["message_id"] for item in feedback_items]
+        today = date.today()
+        yesterday = today - timedelta(days=1)
 
-    combined_text = "\n\n---\n\n".join(feedback_texts)
+        since = yesterday.strftime("%d-%b-%Y")
+        before = today.strftime("%d-%b-%Y")
 
-    # Lavoriamo su una copia: se qualcosa fallisce, lo stato originale
-    # passato da main() non viene modificato.
-    working_state = deepcopy(state)
+        # Cerca solo le email di ieri inviate da noi
+        # con "Newsletter" nell'oggetto.
+        status, data = mail.search(
+            None,
+            "FROM", gmail_user,
+            "SUBJECT", "Newsletter",
+            "SINCE", since,
+            "BEFORE", before,
+        )
 
-    patch = _interpret_feedback(working_state, combined_text)
+        ids = data[0].split() if status == "OK" and data and data[0] else []
 
-    # JSON non interpretabile: non consideriamo il feedback elaborato.
-    if patch is None:
-        print("   ⚠ Impossibile interpretare il feedback: nessuna modifica applicata.")
-        return state
+        print(f"   → Newsletter di ieri trovate: {len(ids)}")
 
-    working_state = _apply_patch(working_state, patch)
+        feedback_items = []
 
-    # Segniamo le email come lette SOLO dopo aver applicato con successo
-    # il feedback.
-    _mark_feedback_as_read(
-        gmail_user,
-        gmail_password,
-        message_ids,
-    )
+        for msg_id in ids:
+            status, msg_data = mail.fetch(msg_id, "(BODY.PEEK[])")
 
-    # A questo punto possiamo rendere ufficiale il nuovo stato.
-    return working_state
+            if status != "OK" or not msg_data or not msg_data[0]:
+                continue
+
+            msg = email.message_from_bytes(msg_data[0][1])
+
+            body = _extract_text_body(msg)
+            body = _strip_quoted_reply(body)
+
+            if body.strip():
+                feedback_items.append({
+                    "message_id": msg.get("Message-ID", ""),
+                    "body": body.strip(),
+                })
+
+        return feedback_items
+
+    finally:
+        try:
+            mail.close()
+        except Exception:
+            pass
+
+        try:
+            mail.logout()
+        except Exception:
+            pass
 
 # --- Lettura email via IMAP -------------------------------------------------
 
