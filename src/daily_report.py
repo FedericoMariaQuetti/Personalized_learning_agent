@@ -1,4 +1,3 @@
-````python
 """
 daily_report.py
 ---------------
@@ -590,4 +589,3 @@ def build_daily_report(
         doc.build(story)
 
     return filename
-````
