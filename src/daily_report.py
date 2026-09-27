@@ -100,11 +100,16 @@ def _get_styles():
 # ---------------------------------------------------------------------------
 
 def _normalize_latex(latex):
+    """
+    Normalizza alcuni comandi LaTeX comuni per Matplotlib mathtext.
+    """
+
     replacements = {
-        r"\ge": r"\geq",
-        r"\le": r"\leq",
-        r"\neq": r"\ne",
+        r"\xrightarrow{d}": r"\overset{d}{\longrightarrow}",
+        r"\xrightarrow{p}": r"\overset{p}{\longrightarrow}",
+        r"\xrightarrow{a.s.}": r"\overset{a.s.}{\longrightarrow}",
         r"\text{": r"\mathrm{",
+        r"\neq": r"\ne",
     }
 
     for old, new in replacements.items():
@@ -112,21 +117,31 @@ def _normalize_latex(latex):
 
     return latex
 
+
 def _render_latex(latex, output_dir, index, fontsize=14):
+    """
+    Prova a renderizzare una formula LaTeX tramite Matplotlib.
+
+    Se il LaTeX non è supportato da Matplotlib mathtext, salva invece
+    un'immagine contenente la formula come testo normale, così il PDF
+    non viene interrotto.
+    """
+
     filename = os.path.join(
         output_dir,
         f"formula_{index}.png",
     )
 
-    latex = _normalize_latex(latex)
+    normalized_latex = _normalize_latex(latex)
 
+    # Primo tentativo: rendering matematico
     fig = plt.figure(figsize=(0.01, 0.01))
 
     try:
         fig.text(
             0,
             0,
-            f"${latex}$",
+            f"${normalized_latex}$",
             fontsize=fontsize,
         )
 
@@ -139,8 +154,42 @@ def _render_latex(latex, output_dir, index, fontsize=14):
             pad_inches=0.05,
         )
 
-    finally:
         plt.close(fig)
+        return filename
+
+    except Exception as e:
+        plt.close(fig)
+
+        print(
+            f"      ⚠ Formula LaTeX non renderizzabile: "
+            f"{latex!r}"
+        )
+        print(
+            f"         Fallback: formula stampata come testo."
+        )
+
+    # Fallback: formula come testo normale
+    fallback_fig = plt.figure(figsize=(0.01, 0.01))
+
+    try:
+        fallback_fig.text(
+            0,
+            0,
+            latex,
+            fontsize=fontsize,
+        )
+
+        fallback_fig.savefig(
+            filename,
+            format="png",
+            dpi=200,
+            transparent=True,
+            bbox_inches="tight",
+            pad_inches=0.05,
+        )
+
+    finally:
+        plt.close(fallback_fig)
 
     return filename
 
