@@ -1,14 +1,7 @@
 """
 send_email.py
 -------------
-Invia l'email della newsletter tramite Gmail (SMTP), usando una
-"App Password" di Google (NON la password normale del tuo account).
-
-Come creare l'App Password:
-1. Vai su https://myaccount.google.com/security
-2. Attiva la verifica in due passaggi (se non l'hai già)
-3. Cerca "Password per le app" e generane una nuova
-4. Usa quella password nel secret GMAIL_APP_PASSWORD
+Invia l'email tramite Gmail (SMTP), usando una "App Password" di Google.
 """
 
 import os

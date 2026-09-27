@@ -1,9 +1,8 @@
 """
 weekly_report.py
 ----------------
-Prende tutte le voci accumulate durante la settimana (data/weekly_log.json)
-e genera un unico file markdown scaricabile in reports/, poi svuota il log
-per far ripartire la settimana successiva.
+Genera il resoconto settimanale in Markdown a partire dal log accumulato
+durante la settimana (data/weekly_log.json), poi svuota il log.
 """
 
 import json
@@ -15,7 +14,6 @@ REPORTS_DIR = "reports"
 
 
 def build_weekly_report():
-    """Genera il resoconto settimanale in Markdown. Ritorna il path del file creato."""
     if not os.path.exists(LOG_PATH):
         return None
 
@@ -30,18 +28,53 @@ def build_weekly_report():
 
     for entry in entries:
         lines.append(f"## {entry['date']}\n")
-        lines.append(entry["summary"] + "\n")
-        lines.append("**Fonti:**\n")
-        for a in entry["articles"]:
-            lines.append(f"- [{a['title']}]({a['link']}) — {a['source']}")
-        lines.append("")
+
+        if entry.get("science"):
+            lines.append("### 1. Science")
+            for topic in entry["science"]:
+                lines.append(f"**{topic['name']}** (giorno {topic['day']}/{topic['track_days']})\n")
+                lines.append(topic["text"] + "\n")
+
+        if entry.get("reading"):
+            lines.append("### 2. Reading")
+            lines.append(f"**{entry['reading']['book']}** (blocco {entry['reading']['day_in_block']})\n")
+            lines.append(entry["reading"]["text"] + "\n")
+
+        if entry.get("philosophy"):
+            lines.append("### 3. Philosophy")
+            lines.append(f"**{entry['philosophy']['philosopher']}** (giorno {entry['philosophy']['day_in_block']})\n")
+            lines.append(entry["philosophy"]["text"] + "\n")
+
+        if entry.get("german"):
+            lines.append("### 4. German")
+            lines.append(entry["german"]["text"] + "\n")
+
+        if entry.get("coding"):
+            lines.append("### 5. Coding")
+            lines.append(entry["coding"]["text"] + "\n")
+
+        if entry.get("poker"):
+            lines.append("### 6. Poker theory")
+            lines.append(entry["poker"]["text"] + "\n")
+
+        if entry.get("feedback_changes"):
+            lines.append("### 7. Feedback applicato")
+            for change in entry["feedback_changes"]:
+                lines.append(f"- {change}")
+            lines.append("")
+
+        if entry.get("news"):
+            lines.append("### 8. News")
+            lines.append(entry["news"]["summary"] + "\n")
+            for a in entry["news"]["articles"]:
+                lines.append(f"- [{a['title']}]({a['link']}) — {a['source']}")
+            lines.append("")
 
     os.makedirs(REPORTS_DIR, exist_ok=True)
     filename = f"{REPORTS_DIR}/{date.today().isoformat()}_resoconto_settimanale.md"
     with open(filename, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    # Svuota il log per la settimana successiva
     with open(LOG_PATH, "w", encoding="utf-8") as f:
         json.dump({"entries": []}, f, ensure_ascii=False, indent=2)
 

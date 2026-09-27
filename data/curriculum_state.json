@@ -1,0 +1,62 @@
+{
+  "science": {
+    "topics": [
+      {
+        "name": "Fisher information e Cramér-Rao bound",
+        "track": "completa",
+        "track_days": 10,
+        "day": 1,
+        "progress_notes": "",
+        "special_instructions": ""
+      },
+      {
+        "name": "Distribuzioni di probabilità usate in finanza",
+        "track": "breve",
+        "track_days": 5,
+        "day": 1,
+        "progress_notes": "",
+        "special_instructions": ""
+      },
+      {
+        "name": "Panoramica delle architetture AI",
+        "track": "completa",
+        "track_days": 10,
+        "day": 1,
+        "progress_notes": "",
+        "special_instructions": "Tratta una architettura diversa ogni giorno (es. giorno1: percettrone/MLP, giorno2: CNN, giorno3: RNN/LSTM, giorno4: Transformer, giorno5: attention/self-attention in dettaglio, giorno6: modelli encoder-only (BERT), giorno7: modelli decoder-only (GPT), giorno8: diffusion models, giorno9: GAN, giorno10: riepilogo comparativo finale)."
+      }
+    ],
+    "queue": []
+  },
+  "reading": {
+    "book": "I fratelli Karamazov (Fëdor Dostoevskij)",
+    "day_in_block": 1,
+    "block_length": 5,
+    "progress_notes": "",
+    "queue": []
+  },
+  "philosophy": {
+    "philosopher": "Martin Heidegger",
+    "day_in_block": 1,
+    "block_length": 5,
+    "progress_notes": "",
+    "queue": []
+  },
+  "german": {
+    "level": "A1",
+    "day_in_block": 1,
+    "block_length": 5,
+    "progress_notes": ""
+  },
+  "coding": {
+    "day_count": 1,
+    "difficulty_cycle": ["facile", "media", "difficile"],
+    "progress_notes": ""
+  },
+  "poker": {
+    "day_count": 1,
+    "starting_point": "Conosce già le regole del poker, vuole iniziare direttamente con le strategie.",
+    "progress_notes": ""
+  },
+  "feedback_log": []
+}
