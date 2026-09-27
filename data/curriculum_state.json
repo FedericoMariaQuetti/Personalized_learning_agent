@@ -5,24 +5,24 @@
         "name": "Fisher information e Cramér-Rao bound",
         "track": "completa",
         "track_days": 10,
-        "day": 1,
-        "progress_notes": "",
+        "day": 2,
+        "progress_notes": "Oggi abbiamo introdotto la funzione di log-verosimiglianza, lo Score, e definito formalmente l'Informazione di Fisher sia come varianza dello score che come curvatura (derivata seconda attesa), includendo un esempio di calcolo numerico in Python. Domani passeremo alla disuguaglianza di Cramér-Rao per stabilire il limite inferiore della varianza degli stimatori non distorti.",
         "special_instructions": ""
       },
       {
         "name": "Distribuzioni di probabilità usate in finanza",
         "track": "breve",
         "track_days": 5,
-        "day": 1,
-        "progress_notes": "",
+        "day": 2,
+        "progress_notes": "Oggi abbiamo introdotto l'ipotesi di normalità nei log-rendimenti finanziari e i suoi limiti empirici, focalizzandoci su leptocurtosi e code pesanti con un riscontro computazionale in Python. Domani partiremo da qui per esplorare le distribuzioni a code pesanti (t-Student e distribuzioni stabili di Lévy).",
         "special_instructions": ""
       },
       {
         "name": "Panoramica delle architetture AI",
         "track": "completa",
         "track_days": 10,
-        "day": 1,
-        "progress_notes": "",
+        "day": 2,
+        "progress_notes": "Oggi ho coperto le basi storiche e matematiche del Perceptron e del Multi-Layer Perceptron (MLP), focalizzandomi sulle funzioni di attivazione non lineari, sul teorema di approssimazione universale e sul principio di funzionamento della backpropagation. Domani passeremo alle Convolutional Neural Networks (CNN) e ai bias induttivi per i dati spaziali.",
         "special_instructions": "Tratta una architettura diversa ogni giorno (es. giorno1: percettrone/MLP, giorno2: CNN, giorno3: RNN/LSTM, giorno4: Transformer, giorno5: attention/self-attention in dettaglio, giorno6: modelli encoder-only (BERT), giorno7: modelli decoder-only (GPT), giorno8: diffusion models, giorno9: GAN, giorno10: riepilogo comparativo finale)."
       }
     ],
@@ -49,9 +49,13 @@
     "progress_notes": ""
   },
   "coding": {
-    "day_count": 1,
-    "difficulty_cycle": ["facile", "media", "difficile"],
-    "progress_notes": ""
+    "day_count": 2,
+    "difficulty_cycle": [
+      "facile",
+      "media",
+      "difficile"
+    ],
+    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper())."
   },
   "poker": {
     "day_count": 1,
