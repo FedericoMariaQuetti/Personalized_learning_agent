@@ -208,25 +208,44 @@ def _escape_text(text):
 
 def _convert_basic_markdown(text):
     """
-    Converte solo una piccola parte del Markdown in markup comprensibile
-    a ReportLab.
+    Converte il Markdown elementare in markup compatibile con ReportLab.
 
-    Supporta:
-    **grassetto**
-    *corsivo*
+    Protegge prima il codice inline tra backtick, così gli asterischi
+    presenti nel codice non vengono interpretati come Markdown.
     """
 
+    code_spans = []
+
+    def protect_code(match):
+        token = f"__CODE_SPAN_{len(code_spans)}__"
+        code_spans.append(match.group(1))
+        return token
+
+    # 1. Proteggi il codice inline
+    text = re.sub(
+        r"`([^`\n]+)`",
+        protect_code,
+        text,
+    )
+
+    # 2. Grassetto
     text = re.sub(
         r"\*\*(.+?)\*\*",
         r"<b>\1</b>",
         text,
     )
 
+    # 3. Corsivo
     text = re.sub(
         r"(?<!\*)\*([^*\n]+?)\*(?!\*)",
         r"<i>\1</i>",
         text,
     )
+
+    # 4. Ripristina il codice inline
+    for i, code in enumerate(code_spans):
+        token = f"__CODE_SPAN_{i}__"
+        text = text.replace(token, f"<font name='Courier'>{code}</font>")
 
     return text
 
