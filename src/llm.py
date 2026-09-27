@@ -37,7 +37,7 @@ def _generate_with_gemini(prompt, json_mode=False):
 
     generation_config = {"response_mime_type": "application/json"} if json_mode else None
     model = genai.GenerativeModel(GEMINI_MODEL, generation_config=generation_config)
-    response = model.generate_content(prompt)
+    response = model.generate_content(prompt, request_options={"timeout": 90})
     return response.text
 
 
