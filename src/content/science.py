@@ -5,6 +5,7 @@ Sezione 1: Science. Gestisce fino a 3 argomenti scientifici in parallelo,
 ognuno con il proprio ritmo (5/10/20 giorni) e la propria continuità.
 """
 
+from copy import deepcopy
 from llm import generate_text
 from content._utils import split_content_and_summary
 
@@ -38,16 +39,20 @@ RIEPILOGO_INTERNO: [2-3 frasi su cosa hai coperto oggi, per dare continuità dom
 def generate_science_section(science_state):
     """
     Genera il contenuto di oggi per tutti gli argomenti attivi.
-    Ritorna (html_snippet, nuovo_stato_science, log_topics) dove log_topics è
-    una lista di {"name", "day", "track_days", "text"} per il resoconto settimanale.
+
+    Ogni topic è indipendente:
+    se uno fallisce, gli altri vengono comunque generati.
+
+    Ritorna:
+        (html_snippet, nuovo_stato_science, log_topics)
     """
     html_parts = ["<h2>1. Science</h2>"]
     updated_topics = []
     log_topics = []
 
     for topic in science_state["topics"]:
+        # Argomento già concluso: nessuna chiamata LLM.
         if topic["day"] > topic["track_days"]:
-            # Argomento concluso: aspetta un nuovo argomento via feedback
             html_parts.append(
                 f"<h3>{topic['name']} — concluso ✅</h3>"
                 f"<p>Percorso completato. Rispondi a questa email indicando un nuovo "
@@ -56,29 +61,65 @@ def generate_science_section(science_state):
             updated_topics.append(topic)
             continue
 
-        prompt = PROMPT_TEMPLATE.format(
-            name=topic["name"],
-            day=topic["day"],
-            track_days=topic["track_days"],
-            track=topic["track"],
-            special_instructions=topic.get("special_instructions", ""),
-            progress_notes=topic.get("progress_notes") or "(primo giorno)",
-        )
-        raw = generate_text(prompt)
-        content, summary = split_content_and_summary(raw)
+        # Lavoriamo su una copia del singolo topic.
+        topic_working = deepcopy(topic)
 
-        html_parts.append(f"<h3>{topic['name']} (giorno {topic['day']}/{topic['track_days']})</h3>")
-        html_parts.append(f"<div>{_to_html_paragraphs(content)}</div>")
-        log_topics.append({
-            "name": topic["name"], "day": topic["day"],
-            "track_days": topic["track_days"], "text": content,
-        })
+        try:
+            prompt = PROMPT_TEMPLATE.format(
+                name=topic_working["name"],
+                day=topic_working["day"],
+                track_days=topic_working["track_days"],
+                track=topic_working["track"],
+                special_instructions=topic_working.get("special_instructions", ""),
+                progress_notes=topic_working.get("progress_notes") or "(primo giorno)",
+            )
 
-        topic["progress_notes"] = summary or topic.get("progress_notes", "")
-        topic["day"] += 1
-        updated_topics.append(topic)
+            raw = generate_text(prompt)
+            content, summary = split_content_and_summary(raw)
+
+            html_parts.append(
+                f"<h3>{topic_working['name']} "
+                f"(giorno {topic_working['day']}/{topic_working['track_days']})</h3>"
+            )
+            html_parts.append(
+                f"<div>{_to_html_paragraphs(content)}</div>"
+            )
+
+            log_topics.append({
+                "name": topic_working["name"],
+                "day": topic_working["day"],
+                "track_days": topic_working["track_days"],
+                "text": content,
+            })
+
+            topic_working["progress_notes"] = (
+                summary or topic_working.get("progress_notes", "")
+            )
+            topic_working["day"] += 1
+
+            # Commit del topic solo se tutto è andato bene.
+            updated_topics.append(topic_working)
+
+            print(f"      ✓ Science / {topic['name']}")
+
+        except Exception as e:
+            print(
+                f"      ⚠ Science / {topic['name']} fallito: "
+                f"{type(e).__name__}: {e}"
+            )
+            print("         Topic invariato: verrà ritentato domani.")
+
+            # Manteniamo ESATTAMENTE il topic originale.
+            updated_topics.append(topic)
+
+            html_parts.append(
+                f"<h3>{topic['name']}</h3>"
+                "<p>Contenuto non disponibile oggi. "
+                "Verrà riprovato domani.</p>"
+            )
 
     science_state["topics"] = updated_topics
+
     return "\n".join(html_parts), science_state, log_topics
 
 

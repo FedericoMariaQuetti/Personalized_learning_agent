@@ -16,6 +16,7 @@ import imaplib
 import json
 from datetime import date
 
+from copy import deepcopy
 from llm import generate_text
 
 TRACK_DAYS = {"breve": 5, "completa": 10, "media": 20}
@@ -23,20 +24,53 @@ TRACK_DAYS = {"breve": 5, "completa": 10, "media": 20}
 
 def process_feedback(state, gmail_user, gmail_password, allowed_senders):
     """
-    Punto di ingresso: legge il feedback nuovo, lo interpreta, lo applica.
-    Ritorna lo stato aggiornato. Se non c'è feedback nuovo, ritorna lo stato invariato.
+    Legge il feedback nuovo e lo applica.
+
+    Le email vengono marcate come lette solo dopo che:
+      1. il feedback è stato interpretato;
+      2. il patch è stato applicato con successo;
+      3. la marcatura come letta è andata a buon fine.
+
+    Se uno di questi passaggi fallisce, lo stato originale viene mantenuto
+    e il feedback potrà essere ritentato nella prossima esecuzione.
     """
-    feedback_texts = _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders)
-    if not feedback_texts:
+    feedback_items = _fetch_unread_feedback(
+        gmail_user,
+        gmail_password,
+        allowed_senders,
+    )
+
+    if not feedback_items:
         return state
 
+    feedback_texts = [item["body"] for item in feedback_items]
+    message_ids = [item["message_id"] for item in feedback_items]
+
     combined_text = "\n\n---\n\n".join(feedback_texts)
-    patch = _interpret_feedback(state, combined_text)
-    if patch:
-        state = _apply_patch(state, patch)
 
-    return state
+    # Lavoriamo su una copia: se qualcosa fallisce, lo stato originale
+    # passato da main() non viene modificato.
+    working_state = deepcopy(state)
 
+    patch = _interpret_feedback(working_state, combined_text)
+
+    # JSON non interpretabile: non consideriamo il feedback elaborato.
+    if patch is None:
+        print("   ⚠ Impossibile interpretare il feedback: nessuna modifica applicata.")
+        return state
+
+    working_state = _apply_patch(working_state, patch)
+
+    # Segniamo le email come lette SOLO dopo aver applicato con successo
+    # il feedback.
+    _mark_feedback_as_read(
+        gmail_user,
+        gmail_password,
+        message_ids,
+    )
+
+    # A questo punto possiamo rendere ufficiale il nuovo stato.
+    return working_state
 
 # --- Lettura email via IMAP -------------------------------------------------
 
@@ -45,38 +79,98 @@ def _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders):
 
     mail = imaplib.IMAP4_SSL("imap.gmail.com")
     mail.login(gmail_user, gmail_password)
-    mail.select("INBOX")
 
-    status, data = mail.search(None, "UNSEEN")
-    ids = data[0].split() if status == "OK" and data and data[0] else []
+    try:
+        mail.select("INBOX")
 
-    feedback_texts = []
-    matched_ids = []
+        status, data = mail.search(None, "UNSEEN")
+        ids = data[0].split() if status == "OK" and data and data[0] else []
 
-    for msg_id in ids:
-        status, msg_data = mail.fetch(msg_id, "(BODY.PEEK[])")
-        if status != "OK" or not msg_data or not msg_data[0]:
-            continue
+        feedback_items = []
 
-        msg = email.message_from_bytes(msg_data[0][1])
-        from_address = email.utils.parseaddr(msg.get("From", ""))[1].lower()
+        for msg_id in ids:
+            status, msg_data = mail.fetch(msg_id, "(BODY.PEEK[])")
 
-        if from_address not in allowed:
-            continue  # non è una risposta dello studente: la ignoriamo e non la tocchiamo
+            if status != "OK" or not msg_data or not msg_data[0]:
+                continue
 
-        body = _extract_text_body(msg)
-        body = _strip_quoted_reply(body)
-        if body.strip():
-            feedback_texts.append(body.strip())
-            matched_ids.append(msg_id)
+            msg = email.message_from_bytes(msg_data[0][1])
 
-    # Segna come lette SOLO le email che abbiamo effettivamente processato
-    for msg_id in matched_ids:
-        mail.store(msg_id, "+FLAGS", "\\Seen")
+            from_address = email.utils.parseaddr(
+                msg.get("From", "")
+            )[1].lower()
 
-    mail.close()
-    mail.logout()
-    return feedback_texts
+            if from_address not in allowed:
+                continue
+
+            body = _extract_text_body(msg)
+            body = _strip_quoted_reply(body)
+
+            if body.strip():
+                feedback_items.append({
+                    "message_id": msg.get("Message-ID", ""),
+                    "body": body.strip(),
+                })
+
+        return feedback_items
+
+    finally:
+        try:
+            mail.close()
+        except Exception:
+            pass
+
+        try:
+            mail.logout()
+        except Exception:
+            pass
+
+
+def _mark_feedback_as_read(gmail_user, gmail_password, message_ids):
+    """
+    Marca come lette solo le email che sono state effettivamente elaborate.
+    Usa Message-ID per evitare di dipendere dai sequence number IMAP
+    della precedente connessione.
+    """
+    if not message_ids:
+        return
+
+    wanted = {mid for mid in message_ids if mid}
+
+    if not wanted:
+        return
+
+    mail = imaplib.IMAP4_SSL("imap.gmail.com")
+    mail.login(gmail_user, gmail_password)
+
+    try:
+        mail.select("INBOX")
+
+        status, data = mail.search(None, "UNSEEN")
+        ids = data[0].split() if status == "OK" and data and data[0] else []
+
+        for msg_id in ids:
+            status, msg_data = mail.fetch(msg_id, "(BODY.PEEK[HEADER.FIELDS (MESSAGE-ID)])")
+
+            if status != "OK" or not msg_data or not msg_data[0]:
+                continue
+
+            header = email.message_from_bytes(msg_data[0][1])
+            message_id = header.get("Message-ID", "")
+
+            if message_id in wanted:
+                mail.store(msg_id, "+FLAGS", "\\Seen")
+
+    finally:
+        try:
+            mail.close()
+        except Exception:
+            pass
+
+        try:
+            mail.logout()
+        except Exception:
+            pass
 
 
 def _extract_text_body(msg):

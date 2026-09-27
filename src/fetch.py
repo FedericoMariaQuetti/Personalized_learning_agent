@@ -16,22 +16,48 @@ def load_sources(config_path="config/sources.yaml"):
     return config["sources"], config.get("settings", {})
 
 
-def fetch_recent_articles(sources, max_articles_per_day=15, hours=24):
+def fetch_recent_articles(sources, max_articles_per_day=10, hours=24):
     cutoff = datetime.now(timezone.utc) - timedelta(hours=hours)
     articles = []
 
     for source in sources:
-        feed = feedparser.parse(source["url"])
-        for entry in feed.entries:
-            published = _get_published_date(entry)
-            if published is None or published < cutoff:
-                continue
-            articles.append({
-                "title": entry.get("title", "Senza titolo"),
-                "link": entry.get("link", ""),
-                "summary": entry.get("summary", "")[:500],
-                "source": source["name"],
-            })
+        try:
+            feed = feedparser.parse(source["url"])
+
+            # feedparser spesso non solleva eccezioni per feed malformati:
+            # controlliamo anche bozo_exception.
+            if getattr(feed, "bozo", 0):
+                bozo_exception = getattr(feed, "bozo_exception", None)
+                print(
+                    f"   ⚠ RSS problematico: {source['name']}"
+                    + (
+                        f" ({type(bozo_exception).__name__}: {bozo_exception})"
+                        if bozo_exception
+                        else ""
+                    )
+                )
+
+            for entry in feed.entries:
+                published = _get_published_date(entry)
+
+                if published is None or published < cutoff:
+                    continue
+
+                articles.append({
+                    "title": entry.get("title", "Senza titolo"),
+                    "link": entry.get("link", ""),
+                    "summary": entry.get("summary", "")[:500],
+                    "source": source["name"],
+                })
+
+            print(f"   ✓ RSS: {source['name']}")
+
+        except Exception as e:
+            print(
+                f"   ⚠ RSS fallito: {source['name']} — "
+                f"{type(e).__name__}: {e}"
+            )
+            continue
 
     return articles[:max_articles_per_day]
 

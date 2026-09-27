@@ -11,7 +11,7 @@ permissions:
 jobs:
   run-newsletter:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout del repository
         uses: actions/checkout@v4
