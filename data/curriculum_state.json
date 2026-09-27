@@ -5,24 +5,24 @@
         "name": "Fisher information e Cramér-Rao bound",
         "track": "completa",
         "track_days": 10,
-        "day": 2,
-        "progress_notes": "Oggi abbiamo introdotto la funzione di log-verosimiglianza, lo Score, e definito formalmente l'Informazione di Fisher sia come varianza dello score che come curvatura (derivata seconda attesa), includendo un esempio di calcolo numerico in Python. Domani passeremo alla disuguaglianza di Cramér-Rao per stabilire il limite inferiore della varianza degli stimatori non distorti.",
+        "day": 3,
+        "progress_notes": "Oggi abbiamo trattato la disuguaglianza di Cramér-Rao (CRLB), definendo il limite inferiore della varianza per gli stimatori non distorti (sia scalari che vettoriali) tramite l'Informazione di Fisher, e discusso l'efficienza asintotica dei MLE e le eccezioni legate alle condizioni di regolarità. Domani introdurremo l'estensione bayesiana del CRLB (disuguaglianza di van Trees).",
         "special_instructions": ""
       },
       {
         "name": "Distribuzioni di probabilità usate in finanza",
         "track": "breve",
         "track_days": 5,
-        "day": 2,
-        "progress_notes": "Oggi abbiamo introdotto l'ipotesi di normalità nei log-rendimenti finanziari e i suoi limiti empirici, focalizzandoci su leptocurtosi e code pesanti con un riscontro computazionale in Python. Domani partiremo da qui per esplorare le distribuzioni a code pesanti (t-Student e distribuzioni stabili di Lévy).",
+        "day": 3,
+        "progress_notes": "Oggi abbiamo introdotto formalmente la distribuzione t di Student e le distribuzioni stabili di Lévy come soluzioni matematiche per modellare leptocurtosi e code pesanti, mostrando un riscontro pratico nel calcolo del VaR in Python. Domani analizzeremo le proprietà di stabilità e i limiti computazionali di questi modelli estremi.",
         "special_instructions": ""
       },
       {
         "name": "Panoramica delle architetture AI",
         "track": "completa",
         "track_days": 10,
-        "day": 2,
-        "progress_notes": "Oggi ho coperto le basi storiche e matematiche del Perceptron e del Multi-Layer Perceptron (MLP), focalizzandomi sulle funzioni di attivazione non lineari, sul teorema di approssimazione universale e sul principio di funzionamento della backpropagation. Domani passeremo alle Convolutional Neural Networks (CNN) e ai bias induttivi per i dati spaziali.",
+        "day": 3,
+        "progress_notes": "Oggi ho introdotto le Convolutional Neural Networks (CNN), focalizzandomi sul bias induttivo spaziale, l'operazione di convoluzione discreta, il weight sharing, il pooling e la riduzione dei parametri rispetto ai MLP. Domani la transizione verso le sequenze temporali con RNN e LSTM.",
         "special_instructions": "Tratta una architettura diversa ogni giorno (es. giorno1: percettrone/MLP, giorno2: CNN, giorno3: RNN/LSTM, giorno4: Transformer, giorno5: attention/self-attention in dettaglio, giorno6: modelli encoder-only (BERT), giorno7: modelli decoder-only (GPT), giorno8: diffusion models, giorno9: GAN, giorno10: riepilogo comparativo finale)."
       }
     ],
@@ -30,37 +30,37 @@
   },
   "reading": {
     "book": "I fratelli Karamazov (Fëdor Dostoevskij)",
-    "day_in_block": 1,
+    "day_in_block": 2,
     "block_length": 5,
-    "progress_notes": "",
+    "progress_notes": "Nel primo blocco ho introdotto la presentazione della famiglia Karamazov, focalizzandomi sui profili psicologici di Fëdor, Dmitrij, Ivan e Alyosha, e ho analizzato il fallito incontro di riconciliazione nel monastero dello starec Zosima, che pone le basi per il conflitto morale e drammatico dell'opera.",
     "queue": []
   },
   "philosophy": {
     "philosopher": "Martin Heidegger",
-    "day_in_block": 1,
+    "day_in_block": 2,
     "block_length": 5,
-    "progress_notes": "",
+    "progress_notes": "Oggi abbiamo introdotto la biografia di Martin Heidegger, dalle sue origini cattoliche e provinciali nella Germania del Sud fino alla sua adesione al nazismo nel 1933 e al successivo distacco. Abbiamo contestualizzato il suo pensiero nella crisi della Repubblica di Weimar e nel clima di smarrimento spirituale dell'Europa del Novecento, senza entrare nei dettagli tecnici della sua filosofia.",
     "queue": []
   },
   "german": {
     "level": "A1",
-    "day_in_block": 1,
+    "day_in_block": 2,
     "block_length": 5,
-    "progress_notes": ""
+    "progress_notes": "Oggi abbiamo introdotto i saluti di base (formali e informali), come chiedere \"come stai?\" e le formule essenziali per presentarsi (\"Ich heiße...\"). Lo studente parte da zero assoluto e ha risposto bene ai concetti chiave della prima lezione, ponendo un'ottima base per le interazioni quotidiane."
   },
   "coding": {
-    "day_count": 2,
+    "day_count": 3,
     "difficulty_cycle": [
       "facile",
       "media",
       "difficile"
     ],
-    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper())."
+    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log."
   },
   "poker": {
-    "day_count": 1,
+    "day_count": 2,
     "starting_point": "Conosce già le regole del poker, vuole iniziare direttamente con le strategie.",
-    "progress_notes": ""
+    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere."
   },
   "feedback_log": []
 }
