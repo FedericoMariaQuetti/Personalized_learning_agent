@@ -47,8 +47,3 @@ def generate_poker_section(poker_state):
         poker_state["progress_notes"] = (poker_state.get("progress_notes", "") + "\n" + summary).strip()
     poker_state["day_count"] += 1
     return html, poker_state, log_entry
-
-
-def _to_html_paragraphs(text):
-    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
-    return "".join(f"<p>{p}</p>" for p in paragraphs)

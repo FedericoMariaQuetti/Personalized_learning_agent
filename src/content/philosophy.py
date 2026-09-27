@@ -67,8 +67,3 @@ def generate_philosophy_section(philosophy_state):
     philosophy_state["progress_notes"] = summary or philosophy_state.get("progress_notes", "")
     philosophy_state["day_in_block"] += 1
     return html, philosophy_state, log_entry
-
-
-def _to_html_paragraphs(text):
-    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
-    return "".join(f"<p>{p}</p>" for p in paragraphs)

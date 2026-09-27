@@ -21,6 +21,7 @@ from llm import generate_text
 
 TRACK_DAYS = {"breve": 5, "completa": 10, "media": 20}
 
+# --- Lettura email via IMAP -------------------------------------------------
 
 def _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders):
     import socket
@@ -85,58 +86,40 @@ def _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders):
         except Exception:
             pass
 
-# --- Lettura email via IMAP -------------------------------------------------
 
-def _fetch_unread_feedback(gmail_user, gmail_password, allowed_senders):
-    allowed = {addr.strip().lower() for addr in allowed_senders}
+def process_feedback(state, gmail_user, gmail_password, allowed_senders):
+    feedback_items = _fetch_unread_feedback(
+        gmail_user,
+        gmail_password,
+        allowed_senders,
+    )
 
-    mail = imaplib.IMAP4_SSL("imap.gmail.com")
-    mail.login(gmail_user, gmail_password)
+    if not feedback_items:
+        return state
 
-    try:
-        mail.select("INBOX")
+    feedback_texts = [item["body"] for item in feedback_items]
+    message_ids = [item["message_id"] for item in feedback_items]
 
-        status, data = mail.search(None, "UNSEEN")
-        ids = data[0].split() if status == "OK" and data and data[0] else []
+    combined_text = "\n\n---\n\n".join(feedback_texts)
 
-        feedback_items = []
+    working_state = deepcopy(state)
 
-        for msg_id in ids:
-            status, msg_data = mail.fetch(msg_id, "(BODY.PEEK[])")
+    patch = _interpret_feedback(working_state, combined_text)
 
-            if status != "OK" or not msg_data or not msg_data[0]:
-                continue
+    if patch is None:
+        print("   ⚠ Impossibile interpretare il feedback: nessuna modifica applicata.")
+        return state
 
-            msg = email.message_from_bytes(msg_data[0][1])
+    working_state = _apply_patch(working_state, patch)
 
-            from_address = email.utils.parseaddr(
-                msg.get("From", "")
-            )[1].lower()
+    _mark_feedback_as_read(
+        gmail_user,
+        gmail_password,
+        message_ids,
+    )
 
-            if from_address not in allowed:
-                continue
+    return working_state
 
-            body = _extract_text_body(msg)
-            body = _strip_quoted_reply(body)
-
-            if body.strip():
-                feedback_items.append({
-                    "message_id": msg.get("Message-ID", ""),
-                    "body": body.strip(),
-                })
-
-        return feedback_items
-
-    finally:
-        try:
-            mail.close()
-        except Exception:
-            pass
-
-        try:
-            mail.logout()
-        except Exception:
-            pass
 
 
 def _mark_feedback_as_read(gmail_user, gmail_password, message_ids):

@@ -71,8 +71,3 @@ def generate_german_section(german_state):
         german_state["day_in_block"] = day + 1
 
     return html, german_state, log_entry
-
-
-def _to_html_paragraphs(text):
-    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
-    return "".join(f"<p>{p}</p>" for p in paragraphs)
