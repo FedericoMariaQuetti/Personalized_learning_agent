@@ -251,10 +251,21 @@ def _add_text_with_inline_math(
 
         img = Image(image_path)
 
-        img.drawHeight = 0.45 * cm
-        img.drawWidth = (
-            0.45 * cm * max(1, len(latex) ** 0.35)
+        # Dimensione controllata per le formule inline.
+        # Mantiene il rapporto d'aspetto originale.
+        max_height = 0.45 * cm
+        max_width = 5.0 * cm
+
+        width = img.imageWidth
+        height = img.imageHeight
+
+        scale = min(
+            max_width / width,
+            max_height / height,
         )
+
+        img.drawWidth = width * scale
+        img.drawHeight = height * scale
 
         story.append(img)
 
@@ -363,8 +374,8 @@ def _add_content(
 
                 img = Image(image_path)
 
-                max_width = 15 * cm
-                max_height = 4 * cm
+                max_width = 12 * cm
+                max_height = 2.5 * cm
 
                 width = img.imageWidth
                 height = img.imageHeight

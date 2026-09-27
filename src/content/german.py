@@ -11,6 +11,7 @@ a meno che tu non lo cambi via feedback).
 from llm import generate_text
 from content._utils import split_content_and_summary
 
+
 DAY_STAGES = {
     1: "Introduzione di nuovi contenuti (vocabolario/grammatica)",
     2: "Esercizio pratico sui contenuti introdotti",
@@ -18,6 +19,7 @@ DAY_STAGES = {
     4: "Esercizio avanzato/di consolidamento",
     5: "Test e ripasso di tutto il blocco",
 }
+
 
 PROMPT_TEMPLATE = """Sei un tutor di tedesco che scrive in italiano (spiegazioni in italiano,
 esempi/esercizi in tedesco con traduzione).
@@ -43,31 +45,38 @@ RIEPILOGO_INTERNO: [2-3 frasi su cosa hai coperto oggi e sui progressi generali,
 
 def generate_german_section(german_state):
     day = german_state["day_in_block"]
-    stage = DAY_STAGES.get(day, "Ripasso")
+
+    stage = DAY_STAGES.get(
+        day,
+        "Ripasso",
+    )
 
     prompt = PROMPT_TEMPLATE.format(
         level=german_state["level"],
         day=day,
         block_length=german_state["block_length"],
         stage=stage,
-        progress_notes=german_state.get("progress_notes") or "(primo giorno)",
+        progress_notes=german_state.get("progress_notes")
+        or "(primo giorno)",
     )
+
     raw = generate_text(prompt)
     content, summary = split_content_and_summary(raw)
 
-    html = (
-        f"<h2>4. German</h2>"
-        f"<h3>Livello {german_state['level']} — giorno {day}/{german_state['block_length']}: {stage}</h3>"
-        f"<div>{_to_html_paragraphs(content)}</div>"
+    log_entry = {
+        "text": f"[{stage}] {content}"
+    }
+
+    german_state["progress_notes"] = (
+        summary
+        or german_state.get("progress_notes", "")
     )
-    log_entry = {"text": f"[{stage}] {content}"}
 
-    german_state["progress_notes"] = summary or german_state.get("progress_notes", "")
-
-    # Percorso continuo: dopo l'ultimo giorno del blocco si riparte da 1
+    # Percorso continuo: dopo l'ultimo giorno del blocco
+    # si riparte da 1.
     if day >= german_state["block_length"]:
         german_state["day_in_block"] = 1
     else:
         german_state["day_in_block"] = day + 1
 
-    return html, german_state, log_entry
+    return content, german_state, log_entry

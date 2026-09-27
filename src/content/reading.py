@@ -9,6 +9,7 @@ dalla coda "queue" se è già stata popolata).
 from llm import generate_text
 from content._utils import split_content_and_summary
 
+
 PROMPT_TEMPLATE = """Sei un tutor di letteratura che scrive in italiano.
 
 Libro: "{book}"
@@ -39,30 +40,39 @@ RIEPILOGO_INTERNO: [2-3 frasi su cosa hai coperto oggi, per continuità]
 
 def generate_reading_section(reading_state):
     if reading_state["day_in_block"] > reading_state["block_length"]:
-        html = (
-            "<h2>2. Reading</h2>"
-            f"<p><strong>{reading_state['book']}</strong> — completato ✅. "
-            "Rispondi a questa email con il titolo del prossimo libro per continuare.</p>"
+        content = (
+            f"{reading_state['book']} — completato.\n\n"
+            "Rispondi a questa email con il titolo del prossimo libro "
+            "per continuare."
         )
-        return html, reading_state, None
+
+        return content, reading_state, None
 
     prompt = PROMPT_TEMPLATE.format(
         book=reading_state["book"],
         day=reading_state["day_in_block"],
         block_length=reading_state["block_length"],
-        progress_notes=reading_state.get("progress_notes") or "(primo giorno)",
+        progress_notes=reading_state.get("progress_notes")
+        or "(primo giorno)",
     )
+
     raw = generate_text(prompt)
     content, summary = split_content_and_summary(raw)
 
     day_in_block = reading_state["day_in_block"]
-    html = (
-        f"<h2>2. Reading</h2>"
-        f"<h3>{reading_state['book']} — blocco {day_in_block}/{reading_state['block_length']}</h3>"
-        f"<div>{_to_html_paragraphs(content)}</div>"
-    )
-    log_entry = {"book": reading_state["book"], "day_in_block": day_in_block, "text": content}
 
-    reading_state["progress_notes"] = summary or reading_state.get("progress_notes", "")
+    log_entry = {
+        "book": reading_state["book"],
+        "day_in_block": day_in_block,
+        "text": content,
+    }
+
+    reading_state["progress_notes"] = (
+        summary
+        or reading_state.get("progress_notes", "")
+    )
+
     reading_state["day_in_block"] += 1
-    return html, reading_state, log_entry
+
+    return content, reading_state, log_entry
+
