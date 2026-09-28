@@ -2,8 +2,8 @@ name: Newsletter giornaliera
 
 on:
   schedule:
-    - cron: "0 15 * * *"
-  
+    - cron: "*/5 * * * *"
+    
 permissions:
   contents: write
 
