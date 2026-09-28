@@ -2,9 +2,8 @@ name: Newsletter giornaliera
 
 on:
   schedule:
-    - cron: "0 16 * * *"
-  workflow_dispatch: {}
-
+    - cron: "0 15 * * *"
+  
 permissions:
   contents: write
 
