@@ -44,9 +44,9 @@
   },
   "german": {
     "level": "A1",
-    "day_in_block": 2,
+    "day_in_block": 3,
     "block_length": 5,
-    "progress_notes": "Oggi abbiamo introdotto i saluti di base (formali e informali), come chiedere \"come stai?\" e le formule essenziali per presentarsi (\"Ich heiße...\"). Lo studente parte da zero assoluto e ha risposto bene ai concetti chiave della prima lezione, ponendo un'ottima base per le interazioni quotidiane."
+    "progress_notes": "Oggi ho proposto un esercizio pratico di 5 domande per testare i saluti di base, le presentazioni (\"Ich heiße\") e le formule per chiedere \"come stai?\" (sia formali che informali). Lo studente sta consolidando le basi del livello A1 con entusiasmo, dimostrando di aver memorizzato i concetti chiave del Giorno 1."
   },
   "coding": {
     "day_count": 3,

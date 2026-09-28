@@ -293,6 +293,143 @@
           }
         ]
       }
+    },
+    {
+      "date": "2026-09-28",
+      "science": [],
+      "reading": null,
+      "philosophy": null,
+      "german": {
+        "text": "[Esercizio pratico sui contenuti introdotti] Buongiorno! \n\nBenvenuto al Giorno 2 del nostro percorso di tedesco! Ieri hai fatto un lavoro eccezionale imparando i saluti e le presentazioni di base. \n\nVisto che hai iniziato da zero assoluto e hai dimostrato subito grande attenzione, oggi passiamo direttamente alla pratica. Mettiamo alla prova quello che hai imparato ieri con un esercizio mirato.\n\nImmagina di incontrare una persona in Germania: come ti comporteresti? \n\nEcco un piccolo test per te. Prova a completare o tradurre le frasi qui sotto. Prendi un foglio e scrivi le tue risposte (non preoccuparti di sbagliare, è così che si impara!).\n\n---\n\n### Esercizio Pratico (Übung)\n\n**1. Saluta informalmente un amico che incontri per strada:**\n*   *Tuo compito:* Scrivi \"Ciao!\" in tedesco.\n\n**2. Chiedi formalmente a una persona che non conosci \"Come sta?\":**\n*   *Tuo compito:* Traduci la domanda usando la forma di cortesia (ricordi il \"Sie\"?).\n\n**3. Presentati:**\n*   *Tuo compito:* Completa la frase con il tuo nome: *\"Ich heiße ...............\"*\n\n**4. Rispondi alla domanda \"Wie geht es dir?\" dicendo che tutto va bene:**\n*   *Tuo compito:* Scrivi la risposta in tedesco.\n\n**5. Saluta per andare via (in modo informale):**\n*   *Tuo compito:* Scrivi \"Ciao!\" (nel senso di arrivederci) in tedesco.\n\n---\n\nPrenditi tutto il tempo che ti serve. Quando hai finito, puoi controllare le tue risposte nella sezione qui sotto. \n\nBuon lavoro e a presto con il Giorno 3!\n\nIl tuo tutor\n\n***\n\n### Soluzioni (Lösungen)\n\n1. **Hallo!** (Ciao!)\n2. **Wie geht es Ihnen?** (Come sta? - *forma formale*)\n3. **Ich heiße [tuo nome].** (Mi chiamo [tuo nome].)\n4. **Es geht mir gut.** (Sto bene / Tutto bene.) oppure semplicemente **Gut!** (Bene!)\n5. **Tschüss!** (Ciao! / Arrivederci!)\n\n***"
+      },
+      "coding": null,
+      "poker": null,
+      "feedback_changes": [],
+      "news": {
+        "summary": "La sintesi automatica delle notizie non è disponibile oggi. Gli articoli recuperati sono riportati nel PDF.",
+        "articles": [
+          {
+            "title": "Starship, primo test in orbita per il veicolo di SpaceX che punta a Marte",
+            "link": "https://www.ilsole24ore.com/art/lanciato-starship-primo-test-orbita-il-veicolo-spacex-che-mira-marte-AJ3jQcRB",
+            "summary": "<span style=\"font-family: inherit; font-size: 1.125rem;\">È partito alle 14.39 ora italiana lo Starship numero 14, forse il più importante tentativo di SpaceX per capire quanto questo maestoso razzo sia a posto...",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "Trani, truffa sui bonus edilizi: sequestrati beni per 88 milioni",
+            "link": "https://www.ilsole24ore.com/art/trani-truffa-bonus-edilizi-sequestrati-beni-88-milioni-AJs8PWRB",
+            "summary": "Tre decreti di sequestro preventivo, per un totale di 88 milioni di euro, nei confronti di otto persone fisiche e due società di capitali. È il bilancio delle indagini coordinate...",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "In Portogallo record di visti agevolati ai grandi investitori",
+            "link": "https://www.ilsole24ore.com/art/in-portogallo-nuovo-record-visti-agevolati-grandi-investitori-AJBzYWRB",
+            "summary": "Il numero di golden visa, i visti agevolati che il Portogallo concede ai grossi investitori stranieri, ha battuto un nuovo record lo scorso anno con il rilascio di 2.685 permessi...",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "Leone parla all’Europa e richiama “l’inutile strage” delle guerre",
+            "link": "https://www.ilsole24ore.com/art/leone-parla-all-europa-e-richiama-l-inutile-strage-guerre-AJLUBXRB",
+            "summary": "Discorso a Metz, la patria di Schuman, ultimo giorno del viaggio in Francia",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "«Azienda russa di analisi dati usata da polizie europee, Italia compresa»",
+            "link": "https://www.ilsole24ore.com/art/azienda-russa-analisi-dati-usata-polizie-europee-italia-compresa-AJhdEQRB",
+            "summary": "Un’azienda statunitense specializzata nell’estrazione di dati, accusata di essere segretamente gestita dalla Russia, avrebbe lavorato a progetti finanziati dall’Ue e avrebbe venduto i propri servizi alle forze dell’ordine europee. Lo...",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "Guerra ultime notizie. Kallas: chi ha scorte di Patriot le dia a Kiev. Missione di Zuppi a Mosca",
+            "link": "https://www.ilsole24ore.com/art/guerra-ultime-notizie-kallas-chi-ha-scorte-patriot-destini-kiev-missione-zuppi-mosca-AJJFJNRB",
+            "summary": "“L’Ucraina ha urgente bisogno di difesa aerea. Ribadiamo l’appello a coloro che ne hanno in magazzino affinché li cedano all’Ucraina, in modo che i missili Patriot che verranno prodotti in...",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "Trump cena con Amodei (Anthropic), dopo mesi di alta tensione. Allarme di Bill Gates",
+            "link": "https://www.ilsole24ore.com/art/trump-incontra-amodei-ceo-anthropic-mesi-tensione-AJGIhGRB",
+            "summary": "Il <a href=\"https://www.ilsole24ore.com/art/anthropic-non-cede-pentagono-no-uso-ia-sorvegliare-masse-e-sviluppare-armi-autonome-AIRdnIfB\" target=\"_self\">presidente Donald Trump</a> terrà una cena privata alla Casa Bianca con Dario Amodei, il ceo italoamericano di Anthropic, scrive Axios, aggiungendo che l’incontro avverrà nel contesto del...",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "L’Iran smentisce Trump: no nuovi negoziati. 007 egiziani: avvertimmo Netanyahu del 7 ottobre",
+            "link": "https://www.ilsole24ore.com/art/nuove-accuse-netanyahu-007-egiziani-avvertirono-piu-volte-un-possibile-7-ottobre-AJPUNFRB",
+            "summary": "",
+            "source": "Il Sole 24 Ore - Mondo"
+          },
+          {
+            "title": "Vita-lavoro, certificazione al via",
+            "link": "https://www.ilsole24ore.com/art/vita-lavoro-certificazione-via-AJMjkqQB",
+            "summary": "Oggi dovrebbero essere resi noti i primi organismi incaricati di rilasciare alle aziende l’attestato sulle politiche di conciliazione tra famiglia e attività professionale. Sgravio fino a 50mila euro all’anno",
+            "source": "Il Sole 24 Ore - Economia"
+          },
+          {
+            "title": "Scatto dell’export extra-Ue, con Svizzera, Cina e Usa",
+            "link": "https://www.ilsole24ore.com/art/scatto-dell-export-extra-ue-svizzera-cina-e-usa-AJpxxNRB",
+            "summary": "Nuovo passo avanti per l’export nazionale che rispetto ai paesi extra-Ue ad agosto cresce su base annua del 16,1%, con una spinta che arriva in particolare da Svizzera, Cina e...",
+            "source": "Il Sole 24 Ore - Economia"
+          },
+          {
+            "title": "Nell’avanzata digitale gli incontri reali acquistano valore",
+            "link": "https://www.ilsole24ore.com/art/nell-avanzata-digitale-incontri-reali-acquistano-valore-AJq1ZFIB",
+            "summary": "Il punto dalla terza edizione degli Stati generali degli eventi",
+            "source": "Il Sole 24 Ore - Economia"
+          },
+          {
+            "title": "Avatar, mascotte e gemelli: il mondo delle persone sintetiche",
+            "link": "https://www.ilsole24ore.com/art/avatar-mascotte-e-gemelli-mondo-persone-sintetiche-AJExprEB",
+            "summary": "L’AI evolve: da strumento creativo a infrastruttura decisionale, abilitando nuovi modelli di test, relazione e interazione tra brand e consumatori",
+            "source": "Il Sole 24 Ore - Economia"
+          },
+          {
+            "title": "Benzina e diesel, anche Ip fisserà limiti ai prezzi",
+            "link": "https://www.ilsole24ore.com/art/benzina-e-diesel-anche-ip-fissera-limiti-prezzi-AJOtguQB",
+            "summary": "Socar segue l’esempio di Eni ed è pronta a mettere un limite ai prezzi di benzina e gasolio nella rete di distribuzione Ip. È quanto si legge in una nota...",
+            "source": "Il Sole 24 Ore - Economia"
+          },
+          {
+            "title": "Borse Ue caute con stallo Usa-Iran e balzo greggio. A Milano sale Eni",
+            "link": "https://www.ilsole24ore.com/art/borse-cinesi-rosso-shanghai-15percento-shenzhen-33percento-AJAD5ERB",
+            "summary": "Petrolio corre dopo il no di Trump alla tregua, Brent oltre 107 $. Dollaro vicino al massimo in due mesi. Spread fermo a 92 punti, rendimento al 4,54%",
+            "source": "Il Sole 24 Ore - Finanza"
+          },
+          {
+            "title": "Wikipedia, Jimmy Wales: «L’intelligenza artificiale può aiutare, ma la decisione finale deve rimanere umana»",
+            "link": "https://www.ilsole24ore.com/art/wikipedia-jimmy-wales-l-intelligenza-artificiale-puo-aiutare-ma-decisione-finale-deve-rimanere-umana-AJovakIB",
+            "summary": "Il cofondatore dell’enciclopedia libera racconta il difficile rapporto con l’IA: i modelli si nutrono della conoscenza prodotta dai volontari, ma continuano a commettere errori. E mentre i colossi tecnologici costruiscono nuovi business sui dati aperti, Wikipedia difende la propria natura non profit. Senza dimenticare i rischi per la privacy di chi contribuisce.",
+            "source": "Il Sole 24 Ore - Tecnologia"
+          },
+          {
+            "title": "L’AI riscrive le regole dei test: Astra aggancia Claude in vetta all’Index",
+            "link": "https://www.ilsole24ore.com/art/l-ai-riscrive-regole-test-astra-aggancia-claude-vetta-all-index-AJPfsQIB",
+            "summary": "La revisione dei parametri di Artificial Analysis premia automazione agentica e gestione dei documenti complessi. Il podio resta saldamente americano, ma la francese Mistral (18ª) punta su costi ridotti e pesi aperti per conquistare la sovranità dei dati nelle imprese.",
+            "source": "Il Sole 24 Ore - Tecnologia"
+          },
+          {
+            "title": "Coding Is Not Solved – Alex Ewerlöf Notes",
+            "link": "https://blog.alexewerlof.com/p/coding-is-not-solved",
+            "summary": "<p>Article URL: <a href=\"https://blog.alexewerlof.com/p/coding-is-not-solved\">https://blog.alexewerlof.com/p/coding-is-not-solved</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49877988\">https://news.ycombinator.com/item?id=49877988</a></p>\n<p>Points: 9</p>\n<p># Comments: 2</p>",
+            "source": "Hacker News (top stories)"
+          },
+          {
+            "title": "Does Reddit have an astroturfing problem? What the data suggests",
+            "link": "https://www.petervijeh.com/projects/reddit-astroturf",
+            "summary": "<p>Article URL: <a href=\"https://www.petervijeh.com/projects/reddit-astroturf\">https://www.petervijeh.com/projects/reddit-astroturf</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49877678\">https://news.ycombinator.com/item?id=49877678</a></p>\n<p>Points: 37</p>\n<p># Comments: 35</p>",
+            "source": "Hacker News (top stories)"
+          },
+          {
+            "title": "Show HN: Hntui – A TUI for Hacker News",
+            "link": "https://github.com/ahmd-sh/hntui",
+            "summary": "<p>hi there! i'd like you to try out a tui i made for browsing hackernews. it's built using opentui and also effect (learning experiment). i really like it and i think you will too!</p>\n<hr />\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49876760\">https://news.ycombinator.com/item?id=49876760</a></p>\n<p>Points: 45</p>\n<p># Comments: 21</p>",
+            "source": "Hacker News (top stories)"
+          },
+          {
+            "title": "The smart home graveyard is getting crowded",
+            "link": "https://www.theverge.com/column/1000778/smart-home-june-oven-graveyard",
+            "summary": "<p>Article URL: <a href=\"https://www.theverge.com/column/1000778/smart-home-june-oven-graveyard\">https://www.theverge.com/column/1000778/smart-home-june-oven-graveyard</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49876373\">https://news.ycombinator.com/item?id=49876373</a></p>\n<p>Points: 43</p>\n<p># Comments: 39</p>",
+            "source": "Hacker News (top stories)"
+          }
+        ]
+      }
     }
   ]
 }
