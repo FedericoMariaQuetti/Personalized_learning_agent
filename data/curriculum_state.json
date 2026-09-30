@@ -5,24 +5,24 @@
         "name": "Fisher information e Cramér-Rao bound",
         "track": "completa",
         "track_days": 10,
-        "day": 3,
-        "progress_notes": "Oggi abbiamo trattato la disuguaglianza di Cramér-Rao (CRLB), definendo il limite inferiore della varianza per gli stimatori non distorti (sia scalari che vettoriali) tramite l'Informazione di Fisher, e discusso l'efficienza asintotica dei MLE e le eccezioni legate alle condizioni di regolarità. Domani introdurremo l'estensione bayesiana del CRLB (disuguaglianza di van Trees).",
+        "day": 4,
+        "progress_notes": "Oggi ho coperto l'interpretazione geometrica dell'Informazione di Fisher come curvatura, il calcolo computazionale tramite l'Information Matrix osservata (Hessiana) e il concetto avanzato di super-efficiency (paradosso di Hodges), concludendo il ciclo di 3 giorni sul CRLB classico. Domani si passa all'estensione bayesiana con la disuguaglianza di van Trees.",
         "special_instructions": ""
       },
       {
         "name": "Distribuzioni di probabilità usate in finanza",
         "track": "breve",
         "track_days": 5,
-        "day": 3,
-        "progress_notes": "Oggi abbiamo introdotto formalmente la distribuzione t di Student e le distribuzioni stabili di Lévy come soluzioni matematiche per modellare leptocurtosi e code pesanti, mostrando un riscontro pratico nel calcolo del VaR in Python. Domani analizzeremo le proprietà di stabilità e i limiti computazionali di questi modelli estremi.",
+        "day": 4,
+        "progress_notes": "Oggi ho coperto le proprietà algebriche delle distribuzioni stabili (funzione caratteristica e Teorema Limite Generalizzato) e i relativi colli di bottiglia computazionali, come l'assenza di densità chiuse e la divergenza dei momenti, mostrando un riscontro pratico in Python con scipy.",
         "special_instructions": ""
       },
       {
         "name": "Panoramica delle architetture AI",
         "track": "completa",
         "track_days": 10,
-        "day": 3,
-        "progress_notes": "Oggi ho introdotto le Convolutional Neural Networks (CNN), focalizzandomi sul bias induttivo spaziale, l'operazione di convoluzione discreta, il weight sharing, il pooling e la riduzione dei parametri rispetto ai MLP. Domani la transizione verso le sequenze temporali con RNN e LSTM.",
+        "day": 4,
+        "progress_notes": "Oggi ho coperto le RNN e le LSTM, spiegando la necessità di gestire sequenze temporali tramite uno stato nascosto, i problemi matematici di vanishing/exploding gradient nella BPTT, e come le LSTM introducano cell state e meccanismi di gating (forget, input, output) per preservare i gradienti a lungo termine. Domani si passa ai Transformer.",
         "special_instructions": "Tratta una architettura diversa ogni giorno (es. giorno1: percettrone/MLP, giorno2: CNN, giorno3: RNN/LSTM, giorno4: Transformer, giorno5: attention/self-attention in dettaglio, giorno6: modelli encoder-only (BERT), giorno7: modelli decoder-only (GPT), giorno8: diffusion models, giorno9: GAN, giorno10: riepilogo comparativo finale)."
       }
     ],
@@ -30,37 +30,37 @@
   },
   "reading": {
     "book": "I fratelli Karamazov (Fëdor Dostoevskij)",
-    "day_in_block": 2,
+    "day_in_block": 3,
     "block_length": 5,
-    "progress_notes": "Nel primo blocco ho introdotto la presentazione della famiglia Karamazov, focalizzandomi sui profili psicologici di Fëdor, Dmitrij, Ivan e Alyosha, e ho analizzato il fallito incontro di riconciliazione nel monastero dello starec Zosima, che pone le basi per il conflitto morale e drammatico dell'opera.",
+    "progress_notes": "Nel secondo blocco ho esaminato lo scontro passionale ed economico tra Fëdor e Dmitrij per Grushenka, culminato nell'aggressione fisica e nelle minacce di morte del figlio, e ho analizzato il tema della sofferenza e dell'umiliazione attraverso l'episodio del capitano Snegirjov gestito da Alyosha.",
     "queue": []
   },
   "philosophy": {
     "philosopher": "Martin Heidegger",
-    "day_in_block": 2,
+    "day_in_block": 3,
     "block_length": 5,
-    "progress_notes": "Oggi abbiamo introdotto la biografia di Martin Heidegger, dalle sue origini cattoliche e provinciali nella Germania del Sud fino alla sua adesione al nazismo nel 1933 e al successivo distacco. Abbiamo contestualizzato il suo pensiero nella crisi della Repubblica di Weimar e nel clima di smarrimento spirituale dell'Europa del Novecento, senza entrare nei dettagli tecnici della sua filosofia.",
+    "progress_notes": "Oggi ho esaminato le principali influenze filosofiche e culturali di Heidegger, focalizzandomi sul debito metodologico con la fenomenologia di Husserl, sulla sua formazione teologica e scolastica, sul recupero dei presocratici e sulla critica radicale alla modernità e allo scientismo.",
     "queue": []
   },
   "german": {
     "level": "A1",
-    "day_in_block": 3,
+    "day_in_block": 4,
     "block_length": 5,
-    "progress_notes": "Oggi ho proposto un esercizio pratico di 5 domande per testare i saluti di base, le presentazioni (\"Ich heiße\") e le formule per chiedere \"come stai?\" (sia formali che informali). Lo studente sta consolidando le basi del livello A1 con entusiasmo, dimostrando di aver memorizzato i concetti chiave del Giorno 1."
+    "progress_notes": "Oggi ho introdotto un dialogo pratico in un contesto comunicativo reale (A1) per unire saluti, presentazioni e formule di cortesia. Lo studente ha risposto con un esercizio di completamento basato su una conversazione, consolidando la differenza tra registro formale e informale."
   },
   "coding": {
-    "day_count": 3,
+    "day_count": 4,
     "difficulty_cycle": [
       "facile",
       "media",
       "difficile"
     ],
-    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log."
+    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log.\nFactory di funzioni, closures, composizione di pipeline con functools.reduce e regex con gruppi nominati per telemetria IoT."
   },
   "poker": {
-    "day_count": 2,
+    "day_count": 3,
     "starting_point": "Conosce già le regole del poker, vuole iniziare direttamente con le strategie.",
-    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere."
+    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere.\nOggi abbiamo introdotto il concetto di \"Range di Apertura\" pre-flop, spiegando perché non bisogna guardare solo alla forza assoluta della mano, ma adattare le mani da giocare in base alla posizione (range stretto in UTG, range ampio al Button). Abbiamo dimostrato la regola con un esempio pratico basato sulla stessa mano ($K-J$ suited) giocata in posizioni opposte."
   },
   "feedback_log": []
 }
