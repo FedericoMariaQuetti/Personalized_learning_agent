@@ -5,24 +5,24 @@
         "name": "Fisher information e Cramér-Rao bound",
         "track": "completa",
         "track_days": 10,
-        "day": 4,
-        "progress_notes": "Oggi ho coperto l'interpretazione geometrica dell'Informazione di Fisher come curvatura, il calcolo computazionale tramite l'Information Matrix osservata (Hessiana) e il concetto avanzato di super-efficiency (paradosso di Hodges), concludendo il ciclo di 3 giorni sul CRLB classico. Domani si passa all'estensione bayesiana con la disuguaglianza di van Trees.",
+        "day": 5,
+        "progress_notes": "Oggi ho esteso il concetto di Informazione di Fisher e CRLB al caso multidimensionale tramite matrici di covarianza e Hessiane, fornendo un'implementazione pratica in Python per il calcolo numerico dell'Information Matrix osservata. Domani la transizione al quadro bayesiano con la disuguaglianza di van Trees.",
         "special_instructions": ""
       },
       {
         "name": "Distribuzioni di probabilità usate in finanza",
         "track": "breve",
         "track_days": 5,
-        "day": 4,
-        "progress_notes": "Oggi ho coperto le proprietà algebriche delle distribuzioni stabili (funzione caratteristica e Teorema Limite Generalizzato) e i relativi colli di bottiglia computazionali, come l'assenza di densità chiuse e la divergenza dei momenti, mostrando un riscontro pratico in Python con scipy.",
+        "day": 5,
+        "progress_notes": "Oggi ho affrontato il problema pratico della stima dei parametri per le distribuzioni a code pesanti (in particolare stabili), discutendo i limiti della MLE tradizionale e mostrando l'uso di `scipy.stats.levy_stable.fit` in Python. Si conclude così il percorso di 4 giorni sulle distribuzioni finanziarie.",
         "special_instructions": ""
       },
       {
         "name": "Panoramica delle architetture AI",
         "track": "completa",
         "track_days": 10,
-        "day": 4,
-        "progress_notes": "Oggi ho coperto le RNN e le LSTM, spiegando la necessità di gestire sequenze temporali tramite uno stato nascosto, i problemi matematici di vanishing/exploding gradient nella BPTT, e come le LSTM introducano cell state e meccanismi di gating (forget, input, output) per preservare i gradienti a lungo termine. Domani si passa ai Transformer.",
+        "day": 5,
+        "progress_notes": "Oggi ho introdotto l'architettura Transformer, superando il collo di bottiglia sequenziale delle RNN/LSTM grazie alla Parallelizzazione, al meccanismo di Scaled Dot-Product Attention e al Multi-Head Attention, integrando i Positional Encoding per preservare l'ordine posizionale dei token. Domani analizzeremo nel dettaglio matematico il meccanismo di Attention e Self-Attention.",
         "special_instructions": "Tratta una architettura diversa ogni giorno (es. giorno1: percettrone/MLP, giorno2: CNN, giorno3: RNN/LSTM, giorno4: Transformer, giorno5: attention/self-attention in dettaglio, giorno6: modelli encoder-only (BERT), giorno7: modelli decoder-only (GPT), giorno8: diffusion models, giorno9: GAN, giorno10: riepilogo comparativo finale)."
       }
     ],
@@ -30,37 +30,37 @@
   },
   "reading": {
     "book": "I fratelli Karamazov (Fëdor Dostoevskij)",
-    "day_in_block": 3,
+    "day_in_block": 4,
     "block_length": 5,
-    "progress_notes": "Nel secondo blocco ho esaminato lo scontro passionale ed economico tra Fëdor e Dmitrij per Grushenka, culminato nell'aggressione fisica e nelle minacce di morte del figlio, e ho analizzato il tema della sofferenza e dell'umiliazione attraverso l'episodio del capitano Snegirjov gestito da Alyosha.",
+    "progress_notes": "Ho trattato il terzo blocco del romanzo, focalizzandomi sul colloquio di Ivan e Alyosha nella taverna (con il poema del Grande Inquisitore e il problema del male), sulla crisi spirituale di Alyosha causata dalla corruzione del corpo di Zosima, e sull'escalation di tensione che precede l'omicidio di Fëdor Pavlovič.",
     "queue": []
   },
   "philosophy": {
     "philosopher": "Martin Heidegger",
-    "day_in_block": 3,
+    "day_in_block": 4,
     "block_length": 5,
-    "progress_notes": "Oggi ho esaminato le principali influenze filosofiche e culturali di Heidegger, focalizzandomi sul debito metodologico con la fenomenologia di Husserl, sulla sua formazione teologica e scolastica, sul recupero dei presocratici e sulla critica radicale alla modernità e allo scientismo.",
+    "progress_notes": "Oggi ho esaminato la distinzione tra Essere ed enti, il concetto di \"svolta\" (Kehre), la struttura dell'Esserci (Dasein) e dell'essere-nel-mondo tramite l'esempio del martello, la temporalità e l'essere-per-la-morte, e infine la concezione del linguaggio come \"casa dell'essere\" nel secondo Heidegger.",
     "queue": []
   },
   "german": {
     "level": "A1",
-    "day_in_block": 4,
+    "day_in_block": 5,
     "block_length": 5,
     "progress_notes": "Oggi ho introdotto un dialogo pratico in un contesto comunicativo reale (A1) per unire saluti, presentazioni e formule di cortesia. Lo studente ha risposto con un esercizio di completamento basato su una conversazione, consolidando la differenza tra registro formale e informale."
   },
   "coding": {
-    "day_count": 4,
+    "day_count": 5,
     "difficulty_cycle": [
       "facile",
       "media",
       "difficile"
     ],
-    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log.\nFactory di funzioni, closures, composizione di pipeline con functools.reduce e regex con gruppi nominati per telemetria IoT."
+    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log.\nFactory di funzioni, closures, composizione di pipeline con functools.reduce e regex con gruppi nominati per telemetria IoT.\nFiltraggio con list comprehension e mascheramento di stringhe tramite re.sub con funzione di callback e slicing."
   },
   "poker": {
-    "day_count": 3,
+    "day_count": 4,
     "starting_point": "Conosce già le regole del poker, vuole iniziare direttamente con le strategie.",
-    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere.\nOggi abbiamo introdotto il concetto di \"Range di Apertura\" pre-flop, spiegando perché non bisogna guardare solo alla forza assoluta della mano, ma adattare le mani da giocare in base alla posizione (range stretto in UTG, range ampio al Button). Abbiamo dimostrato la regola con un esempio pratico basato sulla stessa mano ($K-J$ suited) giocata in posizioni opposte."
+    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere.\nOggi abbiamo introdotto il concetto di \"Range di Apertura\" pre-flop, spiegando perché non bisogna guardare solo alla forza assoluta della mano, ma adattare le mani da giocare in base alla posizione (range stretto in UTG, range ampio al Button). Abbiamo dimostrato la regola con un esempio pratico basato sulla stessa mano ($K-J$ suited) giocata in posizioni opposte.\nOggi abbiamo introdotto il concetto della size di apertura standard pre-flop (2.2x - 2.5x), spiegando l'importanza fondamentale di non variare la dimensione della puntata in base alla forza della mano per mantenere il proprio range bilanciato e illeggibile."
   },
   "feedback_log": []
 }
