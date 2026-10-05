@@ -5,24 +5,24 @@
         "name": "Fisher information e Cramér-Rao bound",
         "track": "completa",
         "track_days": 10,
-        "day": 5,
-        "progress_notes": "Oggi ho esteso il concetto di Informazione di Fisher e CRLB al caso multidimensionale tramite matrici di covarianza e Hessiane, fornendo un'implementazione pratica in Python per il calcolo numerico dell'Information Matrix osservata. Domani la transizione al quadro bayesiano con la disuguaglianza di van Trees.",
+        "day": 6,
+        "progress_notes": "Oggi ho introdotto il quadro bayesiano e la disuguaglianza di van Trees, mostrando come combinare l'informazione di Fisher dei dati con quella del prior e fornendo un'implementazione numerica in Python. Domani esploreremo le connessioni geometriche tra informazione di Fisher e Information Geometry (metrica di Fisher-Rao).",
         "special_instructions": ""
       },
       {
         "name": "Distribuzioni di probabilità usate in finanza",
         "track": "breve",
         "track_days": 5,
-        "day": 5,
-        "progress_notes": "Oggi ho affrontato il problema pratico della stima dei parametri per le distribuzioni a code pesanti (in particolare stabili), discutendo i limiti della MLE tradizionale e mostrando l'uso di `scipy.stats.levy_stable.fit` in Python. Si conclude così il percorso di 4 giorni sulle distribuzioni finanziarie.",
+        "day": 6,
+        "progress_notes": "Oggi abbiamo concluso il percorso estendendo il focus dai modelli univariati a quelli multivariati (copule e risk management sistemico) e abbiamo fornito una sintesi complessiva dei 5 giorni, legando statistica descrittiva, prezzamento, code pesanti e stima numerica. Non ci sarà un sesto giorno, in quanto il percorso si chiude qui.",
         "special_instructions": ""
       },
       {
         "name": "Panoramica delle architetture AI",
         "track": "completa",
         "track_days": 10,
-        "day": 5,
-        "progress_notes": "Oggi ho introdotto l'architettura Transformer, superando il collo di bottiglia sequenziale delle RNN/LSTM grazie alla Parallelizzazione, al meccanismo di Scaled Dot-Product Attention e al Multi-Head Attention, integrando i Positional Encoding per preservare l'ordine posizionale dei token. Domani analizzeremo nel dettaglio matematico il meccanismo di Attention e Self-Attention.",
+        "day": 6,
+        "progress_notes": "Oggi ho approfondito la matematica della Self-Attention tramite il modello Query-Key-Value, spiegando la necessità del fattore di scala $\\sqrt{d_k}$ per la stabilità dei gradienti e fornendo un'implementazione vettorizzata in PyTorch. Domani transiteremo verso i modelli encoder-only, studiando BERT e il Masked Language Modeling.",
         "special_instructions": "Tratta una architettura diversa ogni giorno (es. giorno1: percettrone/MLP, giorno2: CNN, giorno3: RNN/LSTM, giorno4: Transformer, giorno5: attention/self-attention in dettaglio, giorno6: modelli encoder-only (BERT), giorno7: modelli decoder-only (GPT), giorno8: diffusion models, giorno9: GAN, giorno10: riepilogo comparativo finale)."
       }
     ],
@@ -30,37 +30,37 @@
   },
   "reading": {
     "book": "I fratelli Karamazov (Fëdor Dostoevskij)",
-    "day_in_block": 4,
+    "day_in_block": 5,
     "block_length": 5,
-    "progress_notes": "Ho trattato il terzo blocco del romanzo, focalizzandomi sul colloquio di Ivan e Alyosha nella taverna (con il poema del Grande Inquisitore e il problema del male), sulla crisi spirituale di Alyosha causata dalla corruzione del corpo di Zosima, e sull'escalation di tensione che precede l'omicidio di Fëdor Pavlovič.",
+    "progress_notes": "Oggi ho trattato il quarto blocco del romanzo, focalizzandomi sull'omicidio di Fëdor Pavlovič, sull'arresto ingiusto ma moralmente \"predestinato\" di Dmitrij, e sul crollo psicologico di Ivan nei suoi colloqui con Smerdjakov e la conseguente allucinazione del Diavolo.",
     "queue": []
   },
   "philosophy": {
     "philosopher": "Martin Heidegger",
-    "day_in_block": 4,
+    "day_in_block": 5,
     "block_length": 5,
-    "progress_notes": "Oggi ho esaminato la distinzione tra Essere ed enti, il concetto di \"svolta\" (Kehre), la struttura dell'Esserci (Dasein) e dell'essere-nel-mondo tramite l'esempio del martello, la temporalità e l'essere-per-la-morte, e infine la concezione del linguaggio come \"casa dell'essere\" nel secondo Heidegger.",
+    "progress_notes": "Oggi ho esaminato la struttura e il contenuto delle opere principali di Martin Heidegger, distinguendo tra il capolavoro analitico del primo periodo (*Essere e Tempo*) e i saggi poetico-meditativi del secondo periodo (come *L'origine dell'opera d'arte* e la *Lettera sull'\"umanismo\"*), utilizzando l'esempio delle scarpe di Van Gogh per illustrare la concezione dell'arte.",
     "queue": []
   },
   "german": {
     "level": "A1",
-    "day_in_block": 5,
+    "day_in_block": 1,
     "block_length": 5,
-    "progress_notes": "Oggi ho introdotto un dialogo pratico in un contesto comunicativo reale (A1) per unire saluti, presentazioni e formule di cortesia. Lo studente ha risposto con un esercizio di completamento basato su una conversazione, consolidando la differenza tra registro formale e informale."
+    "progress_notes": "Oggi ho condotto una sessione di ripasso e test finale per verificare l'apprendimento dei saluti, delle presentazioni e della distinzione tra registro formale e informale (Sie/du). Lo studente ha completato con successo gli esercizi di verifica, dimostrando una buona comprensione delle basi comunicative del livello A1."
   },
   "coding": {
-    "day_count": 5,
+    "day_count": 6,
     "difficulty_cycle": [
       "facile",
       "media",
       "difficile"
     ],
-    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log.\nFactory di funzioni, closures, composizione di pipeline con functools.reduce e regex con gruppi nominati per telemetria IoT.\nFiltraggio con list comprehension e mascheramento di stringhe tramite re.sub con funzione di callback e slicing."
+    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log.\nFactory di funzioni, closures, composizione di pipeline con functools.reduce e regex con gruppi nominati per telemetria IoT.\nFiltraggio con list comprehension e mascheramento di stringhe tramite re.sub con funzione di callback e slicing.\nFactory di funzioni, closures, functools.reduce, regex con re.sub e callback per pipeline di mascheramento log."
   },
   "poker": {
-    "day_count": 4,
+    "day_count": 5,
     "starting_point": "Conosce già le regole del poker, vuole iniziare direttamente con le strategie.",
-    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere.\nOggi abbiamo introdotto il concetto di \"Range di Apertura\" pre-flop, spiegando perché non bisogna guardare solo alla forza assoluta della mano, ma adattare le mani da giocare in base alla posizione (range stretto in UTG, range ampio al Button). Abbiamo dimostrato la regola con un esempio pratico basato sulla stessa mano ($K-J$ suited) giocata in posizioni opposte.\nOggi abbiamo introdotto il concetto della size di apertura standard pre-flop (2.2x - 2.5x), spiegando l'importanza fondamentale di non variare la dimensione della puntata in base alla forza della mano per mantenere il proprio range bilanciato e illeggibile."
+    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere.\nOggi abbiamo introdotto il concetto di \"Range di Apertura\" pre-flop, spiegando perché non bisogna guardare solo alla forza assoluta della mano, ma adattare le mani da giocare in base alla posizione (range stretto in UTG, range ampio al Button). Abbiamo dimostrato la regola con un esempio pratico basato sulla stessa mano ($K-J$ suited) giocata in posizioni opposte.\nOggi abbiamo introdotto il concetto della size di apertura standard pre-flop (2.2x - 2.5x), spiegando l'importanza fondamentale di non variare la dimensione della puntata in base alla forza della mano per mantenere il proprio range bilanciato e illeggibile.\nOggi abbiamo introdotto il concetto di reazione a un'apertura pre-flop, focalizzandoci sulla superiorità del rilancio (3-bet) rispetto alla semplice chiamata (cold call). Abbiamo spiegato l'importanza di costruire un range di 3-bet polarizzato (valore + bluff) e dimostrato con un esempio pratico ($A5s$ dal Button) come usare l'aggressività per massimizzare il profitto e sfruttare la posizione."
   },
   "feedback_log": []
 }
