@@ -5,8 +5,8 @@
         "name": "Fisher information e Cramér-Rao bound",
         "track": "completa",
         "track_days": 10,
-        "day": 7,
-        "progress_notes": "Oggi ho introdotto l'Information Geometry, interpretando la matrice di Informazione di Fisher come tensore metrico su una varietà di probabilità tramite l'espansione di Taylor della divergenza KL, e ho fornito un esempio computazionale con distribuzioni gaussiane.",
+        "day": 8,
+        "progress_notes": "Oggi ho collegato la metrica della Fisher Information Matrix al Cramér-Rao Bound, interpretando il limite di varianza come raggio di incertezza geometrica sulla varietà statistica e discutendo l'efficienza asintotica della Maximum Likelihood. Domani useremo queste basi per introdurre concetti più avanzati di manifold learning o divergenze asimmetriche.",
         "special_instructions": ""
       },
       {
@@ -21,8 +21,8 @@
         "name": "Panoramica delle architetture AI",
         "track": "completa",
         "track_days": 10,
-        "day": 7,
-        "progress_notes": "Oggi ho introdotto l'architettura encoder-only con focus su BERT, spiegando la self-attention bidirezionale e il paradigma di pre-training basato su Masked Language Modeling (MLM) e Next Sentence Prediction. Domani passeremo all'opposto simmetrico: i modelli decoder-only e l'autoregressività di GPT.",
+        "day": 8,
+        "progress_notes": "Oggi ho introdotto l'architettura decoder-only e i modelli GPT, focalizzandomi sulla generazione autoregressiva e sull'uso della causal mask nella self-attention per impedire la visione del contesto futuro. Domani la lezione tratterà i Diffusion Models e la generazione iterativa di immagini dal rumore.",
         "special_instructions": "Tratta una architettura diversa ogni giorno (es. giorno1: percettrone/MLP, giorno2: CNN, giorno3: RNN/LSTM, giorno4: Transformer, giorno5: attention/self-attention in dettaglio, giorno6: modelli encoder-only (BERT), giorno7: modelli decoder-only (GPT), giorno8: diffusion models, giorno9: GAN, giorno10: riepilogo comparativo finale)."
       }
     ],
@@ -44,23 +44,23 @@
   },
   "german": {
     "level": "A1",
-    "day_in_block": 2,
+    "day_in_block": 3,
     "block_length": 5,
-    "progress_notes": "Oggi ho introdotto il lessico della famiglia (madre, padre, fratelli) e le coniugazioni base dei verbi ausiliari sein e haben per il livello A1. Lo studente ha risposto bene ai concetti e sta iniziando a costruire frasi descrittive più complesse."
+    "progress_notes": "Oggi ho proposto un esercizio pratico di traduzione (5 frasi) combinando il lessico della famiglia e i verbi sein/haben introdotti nel Giorno 1. Lo studente sta consolidando la struttura base della frase tedesca e l'uso corretto delle maiuscole per i sostantivi."
   },
   "coding": {
-    "day_count": 7,
+    "day_count": 8,
     "difficulty_cycle": [
       "facile",
       "media",
       "difficile"
     ],
-    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log.\nFactory di funzioni, closures, composizione di pipeline con functools.reduce e regex con gruppi nominati per telemetria IoT.\nFiltraggio con list comprehension e mascheramento di stringhe tramite re.sub con funzione di callback e slicing.\nFactory di funzioni, closures, functools.reduce, regex con re.sub e callback per pipeline di mascheramento log.\nFactory di funzioni, closures, regex con gruppi nominati, functools.reduce per pipeline di trasformazione e aggregazione dati con dizionari."
+    "progress_notes": "Estrazione di pattern con regex (re.compile, finditer) combinata con list comprehension ed elaborazione stringhe (.upper()).\nClosures e funzioni di ordine superiore combinate con regex avanzate, unpacking di tuple e normalizzazione di stringhe per il parsing e il raggruppamento di log.\nFactory di funzioni, closures, composizione di pipeline con functools.reduce e regex con gruppi nominati per telemetria IoT.\nFiltraggio con list comprehension e mascheramento di stringhe tramite re.sub con funzione di callback e slicing.\nFactory di funzioni, closures, functools.reduce, regex con re.sub e callback per pipeline di mascheramento log.\nFactory di funzioni, closures, regex con gruppi nominati, functools.reduce per pipeline di trasformazione e aggregazione dati con dizionari.\nUtilizzo di functools.partial per configurare funzioni di callback, manipolazione di stringhe incatenate (.replace, .strip, .capitalize) e dizionari per la sostituzione di pattern testuali in liste tramite comprehension."
   },
   "poker": {
-    "day_count": 6,
+    "day_count": 7,
     "starting_point": "Conosce già le regole del poker, vuole iniziare direttamente con le strategie.",
-    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere.\nOggi abbiamo introdotto il concetto di \"Range di Apertura\" pre-flop, spiegando perché non bisogna guardare solo alla forza assoluta della mano, ma adattare le mani da giocare in base alla posizione (range stretto in UTG, range ampio al Button). Abbiamo dimostrato la regola con un esempio pratico basato sulla stessa mano ($K-J$ suited) giocata in posizioni opposte.\nOggi abbiamo introdotto il concetto della size di apertura standard pre-flop (2.2x - 2.5x), spiegando l'importanza fondamentale di non variare la dimensione della puntata in base alla forza della mano per mantenere il proprio range bilanciato e illeggibile.\nOggi abbiamo introdotto il concetto di reazione a un'apertura pre-flop, focalizzandoci sulla superiorità del rilancio (3-bet) rispetto alla semplice chiamata (cold call). Abbiamo spiegato l'importanza di costruire un range di 3-bet polarizzato (valore + bluff) e dimostrato con un esempio pratico ($A5s$ dal Button) come usare l'aggressività per massimizzare il profitto e sfruttare la posizione.\nOggi abbiamo introdotto il concetto di difesa contro una 3-bet, spiegando che l'apressore iniziale deve saper foldare buona parte del proprio range e non farsi guidare dall'orgoglio. Abbiamo dimostrato con un esempio pratico ($AQ$ suited sul Button affrontando una 3-bet dal Big Blind) come la disciplina nel foldare mani forti ma battute dal range avversario sia fondamentale per proteggere il bankroll."
+    "progress_notes": "Oggi abbiamo introdotto il concetto fondamentale della posizione al tavolo, spiegando la differenza tra Early Position e Late Position (Button). Abbiamo dimostrato con un esempio pratico come la stessa mano di partenza ($A9$ suited) cambi radicalmente di valore a seconda di dove ci si siede rispetto al mazziere.\nOggi abbiamo introdotto il concetto di \"Range di Apertura\" pre-flop, spiegando perché non bisogna guardare solo alla forza assoluta della mano, ma adattare le mani da giocare in base alla posizione (range stretto in UTG, range ampio al Button). Abbiamo dimostrato la regola con un esempio pratico basato sulla stessa mano ($K-J$ suited) giocata in posizioni opposte.\nOggi abbiamo introdotto il concetto della size di apertura standard pre-flop (2.2x - 2.5x), spiegando l'importanza fondamentale di non variare la dimensione della puntata in base alla forza della mano per mantenere il proprio range bilanciato e illeggibile.\nOggi abbiamo introdotto il concetto di reazione a un'apertura pre-flop, focalizzandoci sulla superiorità del rilancio (3-bet) rispetto alla semplice chiamata (cold call). Abbiamo spiegato l'importanza di costruire un range di 3-bet polarizzato (valore + bluff) e dimostrato con un esempio pratico ($A5s$ dal Button) come usare l'aggressività per massimizzare il profitto e sfruttare la posizione.\nOggi abbiamo introdotto il concetto di difesa contro una 3-bet, spiegando che l'apressore iniziale deve saper foldare buona parte del proprio range e non farsi guidare dall'orgoglio. Abbiamo dimostrato con un esempio pratico ($AQ$ suited sul Button affrontando una 3-bet dal Big Blind) come la disciplina nel foldare mani forti ma battute dal range avversario sia fondamentale per proteggere il bankroll.\nOggi abbiamo introdotto il concetto di 4-bet pre-flop, spiegando la necessità di costruire un range di 4-bet polarizzato (valore con $AA/KK$ e bluff basati su blocker come $A5s$) per non subire la pressione delle 3-bet avversarie. Abbiamo dimostrato con un esempio pratico da Cutoff contro Button come usare i blocker per forzare il fold dell'avversario e mantenere il controllo del piatto."
   },
   "feedback_log": []
 }
